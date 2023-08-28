@@ -43,11 +43,11 @@ void create_process(char *command, char **arrayStr, char **argv, char *env[])
 
 void accessCommand(char **arrayStr, char **argv, char *env[])
 {
-	char *command = malloc(sizeof(char) * 1024);
+/*	char *command = malloc(sizeof(char) * 1024);
 
 	strcpy(command, "/bin/");
 	strcat(command, arrayStr[0]);
-
+*/
 /*	if (is_builtin_command(arrayStr[0]))
 	{
 		free(command);
@@ -58,10 +58,10 @@ void accessCommand(char **arrayStr, char **argv, char *env[])
 	{
 		create_process(arrayStr[0], arrayStr, argv, env);
 	}
-	else if (access(command, F_OK) == 0)
+/*	else if (access(command, F_OK) == 0)
 	{
 		create_process(command, arrayStr, argv, env);
-	}
+	}*/
 	else
 	{
 		write(2, argv[0], strlen(argv[0]));
@@ -69,6 +69,7 @@ void accessCommand(char **arrayStr, char **argv, char *env[])
 		write(2, "1: ", 3);
 		write(2, arrayStr[0], strlen(arrayStr[0]));
 		write(2, ": not found\n", 12);
+		/* kill(getpid(), SIGSYS); */
 	}
-	free(command);
+	/*free(command);*/
 }
