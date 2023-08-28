@@ -15,7 +15,7 @@ char *getLine(char *buffer)
 	if (flag == -1)
 	{
 		free(buffer);
-		exit(1);
+		exit(EXIT_SUCCESS);
 	}
 
 	buffer[strlen(buffer) - 1] = '\0';
