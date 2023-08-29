@@ -46,8 +46,8 @@ int accessCommand(char **arrayStr, char **argv, char *env[])
 {
 	char *command = malloc(sizeof(char) * 1024);
 
-	strcpy(command, "/bin/");
-	strcat(command, arrayStr[0]);
+	_strcpy(command, "/bin/");
+	_strcat(command, arrayStr[0]);
 
 /*	if (is_builtin_command(arrayStr[0]))
 	{
@@ -67,10 +67,10 @@ int accessCommand(char **arrayStr, char **argv, char *env[])
 	}
 	else
 	{
-		write(2, argv[0], strlen(argv[0]));
+		write(2, argv[0], _strlen(argv[0]));
 		write(2, ": ", 2);
 		write(2, "1: ", 3);
-		write(2, arrayStr[0], strlen(arrayStr[0]));
+		write(2, arrayStr[0], _strlen(arrayStr[0]));
 		write(2, ": not found\n", 12);
 		free(command);
 		return (127);
