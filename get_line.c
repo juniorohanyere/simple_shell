@@ -14,6 +14,7 @@ char *getLine(char *buffer, int status)
 	flag = getline(&buffer, &n, stdin);
 	if (flag == -1)
 	{
+		write(1, "\n", 1);
 		free(buffer);
 		if (isatty(0) == 1)
 			exit(0);
