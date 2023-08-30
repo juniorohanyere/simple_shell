@@ -70,6 +70,13 @@ int handle_path(char **arrayStr, char **argv, char **env)
 	char *shell_path, *path;
 
 	path = get_path();
+	if (path == NULL)
+	{
+		command_not_found(arrayStr, argv);
+		free(path);
+		return (127);
+	}
+
 	shell_path = _strtok(path, ":");
 	if (shell_path != NULL)
 	{
@@ -99,11 +106,7 @@ int handle_path(char **arrayStr, char **argv, char **env)
 		}
 		free(shell_path);
 	}
-	write(2, argv[0], _strlen(argv[0]));
-	write(2, ": ", 2);
-	write(2, "1: ", 3);
-	write(2, arrayStr[0], _strlen(arrayStr[0]));
-	write(2, ": not found\n", 12);
+	command_not_found(arrayStr, argv);
 	free(path), free(shell_path);
 	return (127);
 }

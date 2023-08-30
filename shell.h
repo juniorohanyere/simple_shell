@@ -27,11 +27,11 @@ void execute_builtin_command(char *command, char **args, char **argv,
 	char *env[]);
 int shell_exit(char *command, char **args, char **argv);
 int isnumber(char *s);
-char **shell_path(void);
 char *get_path(void);
 void *_realloc(void *ptr, size_t new_size);
 char *_strtok(char *str, const char *delim);
 char *_strchr(const char *s, int c);
 int handle_path(char **arrayStr, char **argv, char **env);
+void command_not_found(char **arrayStr, char **argv);
 
 #endif
