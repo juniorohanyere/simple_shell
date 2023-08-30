@@ -27,7 +27,7 @@ void execute_builtin_command(char *command, char **args, char **argv,
 	char *env[]);
 int shell_exit(char *command, char **args, char **argv);
 int isnumber(char *s);
-char *get_path(void);
+char *get_path(char **env);
 void *_realloc(void *ptr, size_t new_size);
 char *_strtok(char *str, const char *delim);
 char *_strchr(const char *s, int c);

@@ -69,7 +69,7 @@ int handle_path(char **arrayStr, char **argv, char **env)
 	char *command;
 	char *shell_path, *path;
 
-	path = get_path();
+	path = get_path(env);
 	if (path == NULL)
 	{
 		command_not_found(arrayStr, argv);

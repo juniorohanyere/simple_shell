@@ -10,15 +10,25 @@
  *	   return NULL if PATH variable is empty or not found
 */
 
-char *get_path(void)
+char *get_path(char **env)
 {
-	char *path, *path_cpy;
+	int i;
+	char *path;
+	char **split_var;
 
-	path = getenv("PATH");
-	if (path == NULL)
+	if (env == NULL)
 		return (NULL);
 
-	path_cpy = strdup(path);
-
-	return (path_cpy);
+	for (i = 0; env[i] != NULL; i++)
+	{
+		path = strdup(env[i]);
+		split_var = parse(path, "=");
+		if (_strcmp(split_var[0], "PATH") == 0)
+		{
+			if (split_var[1] == NULL)
+				return (NULL);
+			return (split_var[1]);
+		}
+	}
+	return (NULL);
 }
