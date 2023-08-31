@@ -33,5 +33,7 @@ char *_strtok(char *str, const char *delim);
 char *_strchr(const char *s, int c);
 int handle_path(char **arrayStr, char **argv, char **env);
 void command_not_found(char **arrayStr, char **argv);
+char *_strdup(const char* str);
+void *_memcpy(void *dest, const void *src, size_t size);
 
 #endif

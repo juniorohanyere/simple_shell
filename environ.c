@@ -21,7 +21,7 @@ char *get_path(char **env)
 	if (path == NULL)
 		return (NULL);
 
-	path_dup = strdup(path);
+	path_dup = _strdup(path);
 
 	return (path_dup);
 }
