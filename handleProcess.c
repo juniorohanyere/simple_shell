@@ -87,7 +87,6 @@ int handle_path(char **arrayStr, char **argv, char **env)
 			if (!command)
 			{
 				write(2, "Unable to allocate memory\n", 26);
-				free(path), free(shell_path);
 				exit(EXIT_FAILURE);
 			}
 			_strcpy(command, shell_path);
@@ -104,9 +103,8 @@ int handle_path(char **arrayStr, char **argv, char **env)
 			shell_path = _strtok(NULL, ":");
 			free(command);
 		}
-		free(shell_path);
 	}
 	command_not_found(arrayStr, argv);
-	free(path), free(shell_path);
+	free(path);
 	return (127);
 }

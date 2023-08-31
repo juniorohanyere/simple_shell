@@ -12,23 +12,16 @@
 
 char *get_path(char **env)
 {
-	int i;
-	char *path;
-	char **split_var;
+	char *path, *path_dup;
 
 	if (env == NULL)
 		return (NULL);
 
-	for (i = 0; env[i] != NULL; i++)
-	{
-		path = strdup(env[i]);
-		split_var = parse(path, "=");
-		if (_strcmp(split_var[0], "PATH") == 0)
-		{
-			if (split_var[1] == NULL)
-				return (NULL);
-			return (split_var[1]);
-		}
-	}
-	return (NULL);
+	path = getenv("PATH");
+	if (path == NULL)
+		return (NULL);
+
+	path_dup = strdup(path);
+
+	return (path_dup);
 }
